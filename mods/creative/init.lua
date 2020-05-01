@@ -20,7 +20,7 @@ end
 function creative.air(pos)
   local node = minetest.get_node(pos)
 
-  return node.name == 'air'
+  return node.name == 'air' or node.name == 'ignore'
 end
 
 function creative.newPattern(radius)
@@ -64,23 +64,9 @@ function creative.new2dPattern(radius)
   return pattern
 end
 
-minetest.register_on_newplayer(function(player)
-  player:get_meta():set_int('creative_radius', 6)
-end)
-
-minetest.register_chatcommand('radius', {
-  description = [[A command used for changing the radius with tools]],
-
-  func = function(name, params)
-    local player = minetest.get_player_by_name(name)
-    local radius = math.floor(tonumber(params))
-
-    player:get_meta():set_int('creative_radius', radius)
-  end
-})
-
 local modpath = minetest.get_modpath('creative')
 
 dofile(modpath .. DIR_DELIM ..'drill.lua')
 dofile(modpath .. DIR_DELIM ..'sceptre.lua')
 dofile(modpath .. DIR_DELIM ..'worldbrush.lua')
+dofile(modpath .. DIR_DELIM ..'commands.lua')

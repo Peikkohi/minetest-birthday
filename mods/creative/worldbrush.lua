@@ -25,7 +25,7 @@ local function color(itemstack, player, pointed)
   node = minetest.get_node(pointed.under)
 end
 
-minetest.register_tool('creative:worldbrush', {
+minetest.register_tool('creative:world_brush', {
   description = [[World brush]],
 
   inventory_image = 'world_brush.png',

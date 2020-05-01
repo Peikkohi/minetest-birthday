@@ -89,3 +89,7 @@ minetest.register_node('default:window', {
   is_ground_content = false,
   sunlight_propagates = true,
 })
+
+minetest.register_node('default:woodlog', {
+  description = 'window'
+})

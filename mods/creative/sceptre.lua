@@ -16,9 +16,9 @@ local function pull(itemstack, player, pointed)
         this.y = this.y - 1
       end
     else
-      repeat
+      --repeat
         this.y = this.y + 1
-      until creative.air(this)
+      --until creative.air(this)
     end
 
     local node = minetest.get_node(creative.ny(this))
@@ -41,14 +41,14 @@ local function push(itemstack, player, pointed)
     this.y = pos.y
     this.z = pos.z + dpos.z
 
-    if creative.air(this) then
-      repeat
-        this.y = this.y - 1
-      until not creative.air(this)
-    else
+    if not creative.air(this) then
       while not creative.air(creative.py(this)) do
         this.y = this.y + 1
       end
+    --[[else
+      repeat
+        this.y = this.y - 1
+      until not creative.air(this)]]
     end
 
     minetest.remove_node(this)
